@@ -1,6 +1,6 @@
 import numpy as np
-from scipy.misc import imread, imresize
-
+from imageio import imread
+from PIL import Image
 
 def preprocess_input(x, v2=True):
     x = x.astype('float32')
@@ -16,6 +16,7 @@ def _imread(image_name):
 
 
 def _imresize(image_array, size):
+        return np.array(Image.fromarray(image_array).resize(size))
         return imresize(image_array, size)
 
 
